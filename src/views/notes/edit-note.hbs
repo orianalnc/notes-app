@@ -1,0 +1,25 @@
+<div class="container heroMain">
+
+   
+    <div class="row">
+        <div class="col-lg-4 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Editar nota</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/notes/edit-note/{{note._id}}?_method=PUT" method="POST">
+                    <input type="hidden" name="_method" value="PUT">
+                        <div class="form-group">
+                            <input type="text" name="title" class="form-control mb-4" placeholder="Titulo" value="{{note.title}}" autofocus>
+                            <textarea name="description" id="" class="form-control mb-4">{{note.description}}</textarea>
+                            <button class="btn btn-primary" type="submit">Guardar</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

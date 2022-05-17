@@ -1,0 +1,97 @@
+
+/*
+Verde - #6AAFAA
+Gris Claro - #E0E0E0
+Gris - #455A64
+Negro - #263238
+
+--#f2f2f2
+
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+
+:root{
+    --primary: #6AAFAA;
+    --secondary: #455A64;
+    --light: #E0E0E0;
+    --dark: #263238;
+}
+
+
+
+body{
+    background-color: #f2f2f2;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.heroMain{
+    padding: 60px 0;
+}
+
+#heroSlider{
+    padding: 60px 0;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+#heroSlider h2{
+    font-weight: 700;
+}
+
+.carousel-caption{
+    text-align: left;
+    position: relative;
+    padding: 0;
+    bottom: 0;
+}
+
+
+
+.navInit{
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.navInit a {
+    color: var(--dark);
+    text-decoration: none;
+    
+}
+
+.btn-outline-success{
+    color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.btn-outline-success:hover{
+    background-color: var(--secondary);
+    color: var(--light);
+    border-color: var(--secondary);
+}
+
+.btn-signIn:hover{
+    color: var(--secondary);
+    cursor: pointer;
+    
+}
+
+
+.card-body .title{
+    display: grid;
+    grid-template-columns: 90% 10%;
+}
+
+.card-body .title i{
+    color: var(--secondary);
+}
+
+.btn.btn-primary{
+    background-color: var(--secondary);
+    color: var(--light);
+    border-color: var(--secondary);
+}

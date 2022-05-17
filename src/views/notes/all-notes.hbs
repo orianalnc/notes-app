@@ -1,0 +1,35 @@
+<div class="container heroMain">
+
+    
+    <div class="row">
+        {{#each notes }}
+        <div class="col-lg-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="title">
+                           <h5>{{ title }} </h5>
+                           <a href="/notes/edit/{{_id}}"><i class="bi bi-pencil-square"></i></a>  
+                    </div>
+               
+                    <p> {{ description }} </p>
+
+                    <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-danger btn-sm w-100" type="submit"> Eliminar</button>
+                    </form>
+
+                    
+                </div>
+            </div>
+        </div>
+        {{else}}
+            <div class="col-lg-3 card mx-auto">
+                <div class="card-body">
+                     <p class="lead"> No hay notas registradas</p>
+               <a href="/notes/add" class="btn btn-primary">Crea una nota</a>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+
+</div>
