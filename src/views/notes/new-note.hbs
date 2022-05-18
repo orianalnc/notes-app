@@ -1,12 +1,6 @@
 <div class="">
 
-    {{#each errors }}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{text}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {{/each}}
-    <div class="row">
+      <div class="row">
         <div class="col-lg-4 mx-auto">
             <div class="card">
                 <div class="card-header">
@@ -15,8 +9,8 @@
                 <div class="card-body">
                     <form action="/notes/new-note" method="POST">
                         <div class="form-group">
-                            <input type="text" name="title" class="form-control mb-4" placeholder="" autofocus>
-                            <textarea name="description" id="" class="form-control mb-4"></textarea>
+                            <input type="text" name="title" value="{{title}}" class="form-control mb-4" placeholder="" autofocus>
+                            <textarea name="description" id="" class="form-control mb-4">{{description}}</textarea>
                             <button class="btn btn-primary" type="submit">Guardar</button>
                         </div>
                     </form>

@@ -14,7 +14,7 @@ router.post('/notes/new-note', async (req, res) => {
     if (!title) {
         errors.push({ text: 'Ingresa un titulo' })
     }
-    if (!description) {
+    if (!description && description <= 0) {
         errors.push({ text: 'Ingresa una descripción' })
     }
     if (errors.length > 0) {
