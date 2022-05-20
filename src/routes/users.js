@@ -8,7 +8,7 @@ router.get('/users/signin', (req, res) => {
     res.render('users/signin');
 });
 
-router.post('/users/signin', passport.authenticate('local',{
+router.post('/users/signin', passport.authenticate('local', {
     successRedirect: '/notes',
     failureRedirect: '/users/signin',
     failureFlash: true
@@ -22,12 +22,7 @@ router.get('/users/signup', (req, res) => {
 router.post('/users/signup', async (req, res) => {
     const { name, email, password, confirm_password } = req.body;
     const errors = [];
-    if (name.length <= 0) {
-        errors.push({ text: 'Por favor ingresa tu nombre' });
-    }
-    if (email.length <= 0) {
-        errors.push({ text: 'Por favor ingresa tu email' });
-    }
+
     if (password != confirm_password) {
         errors.push({ text: 'Las contraseñas no coinciden' });
     }
@@ -37,19 +32,26 @@ router.post('/users/signup', async (req, res) => {
     if (errors.length > 0) {
         res.render('users/signup', { errors, name, email, password, confirm_password });
     } else {
-        const emailUser = await User.findOne({email:email})
-        if(emailUser){
-            req.flash('errors_msg', ' El email esta en uso');
+        const emailUser = await User.findOne({ email: email });
+        if (emailUser) {
+            req.flash('error', 'El email esta en uso');
             res.redirect('/users/signup');
+        } else {
+            const newUser = new User({ name, email, password });
+            newUser.password = await newUser.encryptPassword(password);
+            await newUser.save();
+            req.flash('success_msg', 'Usuario registrado');
+            res.redirect('/users/signin');
         }
-       const newUser = new User({name, email, password});
-       newUser.password = await newUser.encryptPassword(password)
-       await newUser.save();
-       req.flash('success_msg', 'Usuario registrado');
-       res.redirect('/users/signin');
-    }  
+
+    }
 });
 
+router.get('/users/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+
+})
 
 
 module.exports = router;
